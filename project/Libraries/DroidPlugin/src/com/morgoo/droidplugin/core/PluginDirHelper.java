@@ -106,7 +106,7 @@ public class PluginDirHelper {
     }
 
     public static String getPluginNativeLibraryDir(Context context, String pluginInfoPackageName) {
-        return enforceDirExists(new File(makePluginBaseDir(context, pluginInfoPackageName), "lib"));
+        return enforceDirExists(new File(makePluginBaseDir(context, pluginInfoPackageName), "data/lib"));
     }
 
 
