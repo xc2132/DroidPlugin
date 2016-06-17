@@ -79,6 +79,8 @@ public class PluginManager implements ServiceConnection {
     public static final int INSTALL_FAILED_NO_REQUESTEDPERMISSION = -100001;
     public static final int STUB_NO_ACTIVITY_MAX_NUM = 4;
 
+    //忽略自定义权限
+    public static boolean IGNORE_CUSTOM_PERMISSION = true;
 
     private static final String TAG = PluginManager.class.getSimpleName();
 
