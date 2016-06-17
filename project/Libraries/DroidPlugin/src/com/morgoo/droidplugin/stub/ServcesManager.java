@@ -38,6 +38,7 @@ import com.morgoo.droidplugin.core.PluginProcessManager;
 import com.morgoo.droidplugin.pm.PluginManager;
 import com.morgoo.droidplugin.reflect.FieldUtils;
 import com.morgoo.droidplugin.reflect.MethodUtils;
+import com.morgoo.helper.Log;
 import com.morgoo.helper.compat.ActivityThreadCompat;
 import com.morgoo.helper.compat.CompatibilityInfoCompat;
 import com.morgoo.helper.compat.QueuedWorkCompat;
@@ -110,12 +111,16 @@ public class ServcesManager {
         //            activityThread.mTokenServices.remove(fakeToken);
         ResolveInfo resolveInfo = hostContext.getPackageManager().resolveService(stubIntent, 0);
         ServiceInfo stubInfo = resolveInfo != null ? resolveInfo.serviceInfo : null;
+        if (stubInfo == null) {
+            Log.w("handle", "no find subService");
+            return;
+        }
         PluginManager.getInstance().reportMyProcessName(stubInfo.processName, info.processName, info.packageName);
         PluginProcessManager.preLoadApk(hostContext, info);
         Object activityThread = ActivityThreadCompat.currentActivityThread();
         IBinder fakeToken = new MyFakeIBinder();
-        Class CreateServiceData = Class.forName(ActivityThreadCompat.activityThreadClass().getName() + "$CreateServiceData");
-        Constructor init = CreateServiceData.getDeclaredConstructor();
+        Class<?> CreateServiceData = Class.forName(ActivityThreadCompat.activityThreadClass().getName() + "$CreateServiceData");
+        Constructor<?> init = CreateServiceData.getDeclaredConstructor();
         if (!init.isAccessible()) {
             init.setAccessible(true);
         }
