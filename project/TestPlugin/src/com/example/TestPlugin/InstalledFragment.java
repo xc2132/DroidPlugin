@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.morgoo.droidplugin.pm.PluginManager;
 
 import java.util.List;

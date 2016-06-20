@@ -73,7 +73,7 @@ public class PluginManager implements ServiceConnection {
     public static final String EXTRA_PACKAGENAME = "com.morgoo.droidplugin.EXTRA_EXTRA_PACKAGENAME";
 
     //privoder authority
-    public final String STUB_AUTHORITY_NAME = "com.morgoo.droidplugin_stub";
+    public static String STUB_AUTHORITY_NAME = "com.morgoo.droidplugin_stub";
     public static final String EXTRA_APP_PERSISTENT = "com.morgoo.droidplugin.EXTRA_APP_PERSISTENT";
 
 
@@ -81,7 +81,7 @@ public class PluginManager implements ServiceConnection {
     public static final int STUB_NO_ACTIVITY_MAX_NUM = 4;
 
     //忽略自定义权限
-    public static boolean IGNORE_CUSTOM_PERMISSION = true;
+    public static boolean IGNORE_CUSTOM_PERMISSION = false;
 
     private static final String TAG = PluginManager.class.getSimpleName();
 

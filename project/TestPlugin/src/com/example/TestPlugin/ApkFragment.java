@@ -26,13 +26,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.morgoo.droidplugin.pm.PluginManager;
-import com.morgoo.helper.compat.PackageManagerCompat;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.morgoo.helper.compat.PackageManagerCompat.*;
+import static com.morgoo.helper.compat.PackageManagerCompat.INSTALL_FAILED_NOT_SUPPORT_ABI;
+import static com.morgoo.helper.compat.PackageManagerCompat.INSTALL_SUCCEEDED;
 
 public class ApkFragment extends ListFragment implements ServiceConnection {
     private ArrayAdapter<ApkItem> adapter;

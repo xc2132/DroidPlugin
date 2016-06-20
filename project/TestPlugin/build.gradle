@@ -11,7 +11,7 @@ dependencies {
     compile project(':Libraries:DroidPlugin')
 }
 
-
+//def MY_AUTH = "com.kk.droidplugin_stub";
 android {
     signingConfigs {
         MySignConfig {
@@ -20,6 +20,15 @@ android {
             keyPassword readProperty("key.alias.password", "key.alias.password")
             storePassword readProperty("key.store.password", "key.store.password")
         }
+    }
+
+    defaultConfig{
+        applicationId 'com.example.kk.plugin'
+        targetSdkVersion 19
+//        buildConfigField "String", "MY_AUTH", '"'+MY_AUTH+'"';
+//        manifestPlaceholders = [
+//                MY_AUTH_VALUE: MY_AUTH,
+//        ]
     }
 
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -40,14 +49,11 @@ android {
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
     }
-    lintOptions {
-        abortOnError false
-    }
 
     buildTypes {
         release {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), "proguard-project.txt"
-            signingConfig signingConfigs.MySignConfig
+       //     signingConfig signingConfigs.MySignConfig
         }
     }
 }

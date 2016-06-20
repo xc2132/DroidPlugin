@@ -25,9 +25,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.morgoo.droidplugin"
-    android:versionCode="1"
-    android:versionName="1.0">
+    package="com.morgoo.droidplugin">
 
     <uses-sdk android:minSdkVersion="9" />
 
@@ -2614,11 +2612,11 @@
             </intent-filter>
         </service>
         <provider
-            android:name=".stub.ContentProviderStub$StubP04"
-            android:authorities="com.morgoo.droidplugin_stub_P04"
-            android:exported="false"
-            android:label="@string/stub_name_povider"
-            android:process=":PluginP04" />
+        android:name=".stub.ContentProviderStub$StubP04"
+        android:authorities="com.morgoo.droidplugin_stub_P04"
+        android:exported="false"
+        android:label="@string/stub_name_povider"
+        android:process=":PluginP04" />
 
         <!--第5个进程-->
         <activity
