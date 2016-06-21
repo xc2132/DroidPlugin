@@ -67,32 +67,8 @@ public abstract class AbstractServiceStub extends Service {
         context.startService(service);
     }
 
-//    @Override
-//    public void onStart(Intent intent, int startId) {
-//        try {
-//            if (intent != null) {
-//                if (intent.getBooleanExtra("ActionKillSelf", false)) {
-//                    startKillSelf();
-//                    if (!ServcesManager.getDefault().hasServiceRunning()) {
-//                        stopSelf(startId);
-//                        boolean stopService = getApplication().stopService(intent);
-//                        Log.i(TAG, "doGc Kill Process(pid=%s,uid=%s has exit) for %s onStart=%s intent=%s", android.os.Process.myPid(), android.os.Process.myUid(), getClass().getSimpleName(), stopService, intent);
-//                    } else {
-//                        Log.i(TAG, "doGc Kill Process(pid=%s,uid=%s has exit) for %s onStart intent=%s skip,has service running", android.os.Process.myPid(), android.os.Process.myUid(), getClass().getSimpleName(), intent);
-//                    }
-//
-//                } else {
-//                    mCreator.onStart(this, intent, 0, startId);
-//                }
-//            }
-//        } catch (Throwable e) {
-//            handleException(e);
-//        }
-//        super.onStart(intent, startId);
-//    }
-
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public void onStart(Intent intent, int startId) {
         try {
             if (intent != null) {
                 if (intent.getBooleanExtra("ActionKillSelf", false)) {
@@ -106,15 +82,14 @@ public abstract class AbstractServiceStub extends Service {
                     }
 
                 } else {
-                    return mCreator.onStart(this, intent, 0, startId);
+                    mCreator.onStart(this, intent, 0, startId);
                 }
             }
         } catch (Throwable e) {
             handleException(e);
         }
-        return super.onStartCommand(intent, flags, startId);
+        super.onStart(intent, startId);
     }
-
     private Object sLock = new Object();
 
     private void startKillSelf() {
